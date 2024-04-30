@@ -1,6 +1,6 @@
 SRCS = ft_printf.c
 
-HEAD = printf.h
+HEAD = ft_printf.h
 OBJS = ${SRCS:.c=.o}
 NAME = libftprintf.a
 CC = cc
