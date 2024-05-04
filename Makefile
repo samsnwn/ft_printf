@@ -1,4 +1,4 @@
-SRCS = ft_printf.c
+SRCS = ft_printf.c main.c
 
 HEAD = ft_printf.h
 OBJS = ${SRCS:.c=.o}
@@ -7,6 +7,7 @@ CC = cc
 RM = rm -f
 CFLAGS = -Wall -Werror -Wextra
 INCLUDES = -I./libft
+LIBS = -L./libft -lft
 
 all : libft ${NAME}
 
