@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft/libft.h"
 
 int	count_args(const char *str);
 static int init_data(t_data *data, const char *str);
@@ -29,26 +30,26 @@ int	ft_printf(const char *format, ...)
 		// 1 - If stumbled into % parse the flags.
 		if (*data.str == '%' && *(++data.str))
 		{
-			if (parse_format(&data))
+			// if (parse_format(&data))
 			{
 				return -1;
 			} 
-			render_format(&data);
+			// render_format(&data);
 		}
 		// 2- 
 		else
 		{
 			// stock char in 4k buffer
-			write_buffer(&data, *data.str);
+			// write_buffer(&data, *data.str);
 		}
 		++data.str;
 
 	}
 	// write output
-	flush_buffer(&data);
+	// flush_buffer(&data);
 	// clean up functions
 	va_end(data.ap);
-	free(data.buffer);
+	// free(data.buffer);
 
 	// return written chars
 	return data.written_chars;

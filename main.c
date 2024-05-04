@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "ft_printf.h"
+#include "libft/libft.h"
 
 int	main(void)
 {
@@ -21,6 +23,14 @@ int	main(void)
 	printf("[%x]\n", 42);                         
 	printf("left-padding(minus) -> [%-8x]\n", 42);        
 	printf("sign, zero-padding, width: 8 ->[%+015X]\n", -42); 
+	printf("\n\n");
+	printf("------------------------------------------\n");
+
+	printf("***** Unsigned decimals tests *****\n");
+	printf("\n");
+	printf("width: 8 -> [%u]\n", 42.65);            
+	printf("Zero-padding, width: 8 ->[%08u]\n", 42.65);       
+	printf("left-padding(minus) -> [%-8u]\n", 42.65);        
 	printf("\n\n");
 	printf("------------------------------------------\n");
 
@@ -49,3 +59,11 @@ int	main(void)
 	// warning: flag '0' is ignored when flag '-' is present : [42      ]
 	return (0);
 }
+
+// void compare_testing_results()
+// {
+// 	if (printf("width: 8 -> [%8d]\n", 42) == ft_printf("width: 8 -> [%8d]\n", 42))
+// 		printf("OK\n");
+// 	else
+// 		printf("KO\n");
+// }
