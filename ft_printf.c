@@ -13,14 +13,13 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int	count_args(const char *str);
 static int init_data(t_data *data, const char *str);
 
 int	ft_printf(const char *format, ...)
 {
 	t_data data;
 
-	// 0 - Initialize data and start variadic machinery
+	// 0 - Initialize data
 	va_start(data.ap, format);
 	if (init_data(&data, format) == -1)
 		return (-1);

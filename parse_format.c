@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 
 static void parse_flags(t_data *data);
-static void get_value(t_data *data, int *value);
+static void parse_width_precision(t_data *data, int *value);
 static void parse_specifiers(t_data *data);
 
 // %[0-' '#+][10][.3]d
@@ -17,14 +17,46 @@ int	parse_format(t_data *data)
 	parse_flags(data);
 
 	// 2  - [width *]
-	get_value(data, &data->format.width);
-
+	parse_width_precision(data, &data->format.width);
 	// 3 - [.precision *]
 	if (*data->str == '.' && *(++data->str))
-		get_value(data, &data->format.precision);
+		parse_width_precision(data, &data->format.precision);
 	
 	parse_specifiers(data);
 	return 0;
+}
+
+static void parse_flags(t_data *data)
+{
+	while (ft_strchr(FLAGS, *data->str))
+	{
+		if (*data->str == '-')
+			data->format.left_padding = 1;
+		else if (*data->str == '0')
+			data->format.zero = 1;
+		else if (*data->str == '#')
+			data->format.hash = 1;
+		else if (*data->str == ' ')
+			data->format.space = 1;
+		else if (*data->str == '+')
+			data->format.sign = 1;
+		++data->str;
+	}
+}
+
+static void parse_width_precision(t_data *data, int *value)
+{
+	// If * is found
+	if (*data->str == '*')
+	{
+		// the value will be its corresponding argument in arg list
+		*value = va_arg(data->ap, int);
+		++data->str;
+		return; 
+	}
+
+// if not found we convert the string to a number
+	*value = ft_atoi(data->str);
 }
 
 static void parse_specifiers(t_data *data)
@@ -46,37 +78,4 @@ static void parse_specifiers(t_data *data)
 				data->format.uppercase = 1;
 		}
 	}
-}
-
-static void parse_flags(t_data *data)
-{
-	while (ft_strchr(FLAGS, *data->str))
-	{
-		if (*data->str == '-')
-			data->format.left_padding = 1;
-		else if (*data->str == '0')
-			data->format.zero = 1;
-		else if (*data->str == '#')
-			data->format.hash = 1;
-		else if (*data->str == ' ')
-			data->format.space = 1;
-		else if (*data->str == '+')
-			data->format.sign = 1;
-		++data->str;
-	}
-}
-
-static void get_value(t_data *data, int *value)
-{
-	// If * is found
-	if (*data->str == '*')
-	{
-		// the value will be its corresponding argument in arg list
-		*value = va_arg(data->ap, int);
-		++data->str;
-		return; 
-	}
-
-// if not found we convert the string to a number
-	*value = ft_atoi(data->str);
 }

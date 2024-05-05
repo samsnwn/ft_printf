@@ -18,7 +18,7 @@
 
 # define BUFFER_SIZE (4096)
 # define FLAGS "-0# +"
-#define SPECIFIERS "cspdiuxX%"
+# define SPECIFIERS "cspdiuxX%"
 
 // 1 - Copy string into a 4k buffer until % is found
 // 2 - Parse the flags: When % is found, check which flags and store the variable in a struct ex: t_format.left_padding = 1;
