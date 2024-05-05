@@ -27,57 +27,38 @@ int	ft_printf(const char *format, ...)
 	
 	while (*data.str)
 	{
-		// 1 - If stumbled into % parse the flags.
+		// 1 - If % is found, then parse the flags.
 		if (*data.str == '%' && *(++data.str))
 		{
-			// if (parse_format(&data))
-			{
+			if (parse_format(&data))
 				return -1;
-			} 
-			// render_format(&data);
+			render_format(&data);
 		}
-		// 2- 
+		// 2- If its not found then write the string to the buffer
 		else
 		{
 			// stock char in 4k buffer
-			// write_buffer(&data, *data.str);
+			write_buffer(&data, *data.str);
 		}
 		++data.str;
-
 	}
 	// write output
-	// flush_buffer(&data);
+	flush_buffer(&data);
 	// clean up functions
 	va_end(data.ap);
-	// free(data.buffer);
-
+	free(data.buffer);
 	// return written chars
 	return data.written_chars;
-
 }
 
 static int init_data(t_data *data, const char *str)
 {
-	data->str = str;
 	data->written_chars = 0;
-	data->buffer = malloc(BUFFER_SIZE);
+	data->str = str;
+	data->buffer = malloc(BUFFER_SIZE * sizeof(char));
 	if (!data->buffer)
 		return (-1);
 	data->buffer_index = 0;
-	ft_memset(data->buffer, 0, BUFFER_SIZE);
+	ft_memset(data->buffer, 0, BUFFER_SIZE * sizeof(char));
 	return (0);
-}
-
-int	count_args(const char *str)
-{
-	int i = 0;
-	int count = 0;
-
-	while (str[i])
-	{
-		if (str[i] == '%')
-			count++;
-		i++;
-	}
-	return (count);
 }

@@ -14,31 +14,57 @@
 # define PRINTF_H
 
 # include <stdarg.h>
-# include <stdlib.h>
+# include <stdlib.h> 
 
 # define BUFFER_SIZE (4096)
+# define FLAGS "-0# +"
+#define SPECIFIERS "cspdiuxX%"
 
+// 1 - Copy string into a 4k buffer until % is found
+// 2 - Parse the flags: When % is found, check which flags and store the variable in a struct ex: t_format.left_padding = 1;
+// 3 - After the flags are parsed, we look at the arg list and render each argument according to the flag struct in its corresponding position 
+
+//   FLAGS    WIDTH		PRECISION    SPECIFIER
+// [0-' '#+][width *][.precision *][specifier]
 typedef struct s_format
 {
-	int			minus;
-	int			plus;
+	// Flags
+	int			left_padding;
+	int			sign;
 	int			space;
 	int			zero;
 	int			hash;
+
 	int			width;
 	int			precision;
+ 	// cspdiuxX%
 	char		specifier;
+ // base
+	int 		base;
+	int			uppercase;
+
 }				t_format;
 
+
+// Box to pass by reference to functions
 typedef struct s_data
 {
-	const char	*str;
+	// Pointer copy to format string
+	const char *str;
+	// Argument pointer va_list ->va_arg(ap, int)
 	va_list		ap;
+	// Number of chars written
 	int			written_chars;
+	// Pointer to Buffer to store the string in the HEAP
 	char		*buffer;
+	// Index to write in the buffer
 	int			buffer_index;
 
+	// Format struct
 	t_format	format;
 }				t_data;
+
+
+int	parse_format(t_data *data);
 
 #endif
