@@ -14,11 +14,14 @@
 # define PRINTF_H
 
 # include <stdarg.h>
-# include <stdlib.h> 
+# include <stdlib.h>
+# include <unistd.h>
 
 # define BUFFER_SIZE (4096)
 # define FLAGS "-0# +"
 # define SPECIFIERS "cspdiuxX%"
+# define TRUE 1
+# define FALSE 0
 
 // 1 - Copy string into a 4k buffer until % is found
 // 2 - Parse the flags: When % is found, check which flags and store the variable in a struct ex: t_format.left_padding = 1;
@@ -66,5 +69,7 @@ typedef struct s_data
 
 
 int	parse_format(t_data *data);
+void  write_buffer(t_data *data, char c);
+void flush_buffer(t_data *data);
 
 #endif
