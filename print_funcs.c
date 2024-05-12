@@ -6,18 +6,20 @@ void  print_char(t_data *data, char c)
   int width;
 
   width = data->format.width;
-  // If wifth = 1, do nothing
   if (width > 1)
   {
     if (data->format.left_padding)
     {
-      put_char_n((char)c, width);
+      putchar_n((char)c, 1, data);
+      putchar_n(' ', width - 1, data);
     }
     else 
     {
-
+      putchar_n(' ', width - 1, data);
+      putchar_n((char)c, 1, data);
     }
   }
+  putchar_n((char)c, 1, data);
 }
 
 void  print_str(t_data *data, char *str);

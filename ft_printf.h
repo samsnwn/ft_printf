@@ -71,5 +71,6 @@ typedef struct s_data
 int	parse_format(t_data *data);
 void  write_buffer(t_data *data, char c);
 void flush_buffer(t_data *data);
+void  putchar_n(char c, int precision, t_data *data);
 
 #endif

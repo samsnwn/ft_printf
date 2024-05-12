@@ -13,3 +13,11 @@ void flush_buffer(t_data *data)
   ft_memset(data->buffer, 0, BUFFER_SIZE);
   data->buffer_index = 0;
 }
+
+void  putchar_n(char c, int precision, t_data *data)
+{
+  if (precision <= 0)
+    return;
+  while (precision--)
+    write_buffer(data, c);
+}
