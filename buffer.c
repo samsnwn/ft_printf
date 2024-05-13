@@ -21,3 +21,11 @@ void  putchar_n(char c, int precision, t_data *data)
   while (precision--)
     write_buffer(data, c);
 }
+
+void putstr_n(char *str, int precision, t_data *data)
+{
+  if (precision <= 0)
+    return;
+  while (precision-- && *str)
+    write_buffer(data, *str++);
+}
