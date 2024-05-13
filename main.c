@@ -71,13 +71,13 @@ int	main(void)
 
 	// For chars and strings only width and left padding are allowed
 	// Char tests
-	printf("***** Char tests *****\n");
-	printf("\n");
-	printf("[%c]\n", 'a');
-	printf("[%8c]\n", 'a');
-	printf("[%-8c]\n", 'a');
-	printf("\n\n");
-	printf("------------------------------------------\n");
+	ft_printf("***** Char tests *****\n");
+	ft_printf("\n");
+	ft_printf("[%c]\n", 'a');
+	ft_printf("[%8c]\n", 'a');
+	ft_printf("[%-8c]\n", 'a');
+	ft_printf("\n\n");
+	ft_printf("------------------------------------------\n");
  
 	// String tests
 	printf("***** String tests *****\n");

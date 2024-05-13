@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+#include "libft/libft.h"
 
 static void parse_flags(t_data *data);
 static void parse_width_precision(t_data *data, int *value);

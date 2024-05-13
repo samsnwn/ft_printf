@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+#include "libft/libft.h"
 
 void  write_buffer(t_data *data, char c)
 {
