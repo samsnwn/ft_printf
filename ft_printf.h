@@ -45,7 +45,9 @@ typedef struct s_format
  // base
 	int 		base;
 	int			uppercase;
-
+	
+	int			padding_spaces;
+	
 }				t_format;
 
 
@@ -67,15 +69,17 @@ typedef struct s_data
 	t_format	format;
 }				t_data;
 
-int	ft_printf(const char *format, ...);
 int	parse_format(t_data *data);
+void render_format(t_data *data);
 void  write_buffer(t_data *data, char c);
 void flush_buffer(t_data *data);
+void	set_spaces(t_data *data, char *str);
 void  print_char(t_data *data, char c);
 void  putchar_n(char c, int precision, t_data *data);
+void  print_str(t_data *data, char *str);
+void putstr_n(char *str, int precision, t_data *data);
 // void  print_ptr(t_data *data, void *ptr);
 // void  print_int(t_data *data, int a);
 // void  print_hexa(t_data *data, int a);
-void putstr_n(char *str, int precision, t_data *data);
 
 #endif

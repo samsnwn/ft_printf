@@ -60,7 +60,7 @@ int	main(void)
 // Hexa UPPERCASE base 16 tests
 	printf("***** Hexadecimals UPPERCASE base 16 tests *****\n");
 	printf("\n");
-	printf("No flags -> [%X]\n", 1990);            
+	printf("No flags -> [%X]\n", 1990);  
 	printf("Hash - >[%#X]\n", 1990);            
 	printf("width: 8 -> [%8X]\n", 1990);            
 	printf("Hash, Zero-padding, width: 8 ->[%#08X]\n", 1990);       
@@ -80,12 +80,12 @@ int	main(void)
 	// ft_printf("------------------------------------------\n");
  
 	// String tests
-	printf("***** String tests *****\n");
-	printf("\n");
-	printf(".3 precision -> [%.3s]\n", "Hello World");                // [Hel]
-	printf("width: 15, .3 precision -> [%15.3s]\n\n", "Hello World"); // [            Hel]
-	printf("\n\n");
-	printf("------------------------------------------\n");
+	ft_printf("***** String tests *****\n");
+	ft_printf("\n");
+	ft_printf(".3 precision -> [%.3s]\n", "Hello World");                // [Hel]
+	ft_printf("width: 15, .3 precision -> [%15.3s]\n\n", "Hello World"); // [            Hel]
+	ft_printf("\n\n");
+	ft_printf("------------------------------------------\n");
 
 	// VOID pointer tests
 	void *ptr;
