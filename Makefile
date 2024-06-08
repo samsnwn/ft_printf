@@ -1,5 +1,4 @@
-SRCS = ft_printf.c main.c parse_format.c\
-		buffer.c print_funcs.c\
+SRCS = ft_printf.c utils.c write_letters.c write_numbers.c write_ptr.c main.c
 
 HEAD = ft_printf.h
 OBJS = ${SRCS:.c=.o}
@@ -7,28 +6,25 @@ NAME = libftprintf.a
 CC = cc
 RM = rm -f
 CFLAGS = -Wall -Werror -Wextra
-INCLUDES = -I./libft
-LIBS = -L./libft -lft
 
-all : libft ${NAME}
+all : ${NAME}
 
-libft :
-	make -C ./libft
+main:	all
+	${CC} ${CFLAGS} main.c -o main
 
 ${NAME} : ${OBJS}
 	ar rc ${NAME} ${OBJS}
 	ranlib ${NAME}
 
 %.o: %.c
-	${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@
+	${CC} ${CFLAGS} -c $< -o $@
 
 clean : 
-	${RM} ${OBJS}
+	${RM} ${OBJS} 
 
 fclean : clean
-	make -C ./libft fclean
-	${RM} ${NAME}
+	${RM} ${NAME} main
 
 re : fclean all
 
-.PHONY : all clean fclean re libft
+.PHONY : all clean fclean re

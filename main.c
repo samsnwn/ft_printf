@@ -1,116 +1,138 @@
-#include <stdio.h>
 #include "ft_printf.h"
-#include "libft/libft.h"
 
-int	main(void)
+void edge_cases_tests()
 {
-	// Zero padding, sign, hash and space are only allowed for nmumbers 
-	//  width and left padding are allowed for all types
-	// Width does not allow any kind of truncation 
-	printf("\n");
-	// Integer base 10 tests
-	printf("***** Integer base 10 tests *****\n");
-	printf("\n");
-	printf("No flags -> [%i]\n", 42);                         // [42]
-	printf("width: 8 -> [%8i]\n", 42);                       // [      42]
-	printf("sign, width: 8 -> [%+8i]\n", 42);                // [     +42]
-	printf("Zero-padding, width: 8 ->[%08i]\n", 42);         // [00000042]
-	printf("Sign, Zero-padding, width: 8 ->[%+08i]\n", 42);  // [+0000042]
-	printf("space -> [% i]\n", 42);                          // [ 42]
-	printf("space, yero-padding, width: 10 -> [% 010i]\n", 42); // [ 000000042]
-	printf("left-padding(minus) -> [%-8i]\n", 42);           // [42      ]
-	printf("left-padding(minus), sign -> [%-+8i]\n", 42);      // [+42     ]
-	printf("width: 8, .2 padding -> [%8.2i]\n", 42);         // [      42]
-	printf("sign, zero-padding, width: 8 ->[%+08i]\n", -42); // [-0000042]
+
+	printf("------------------------------------------\n\n");
+	printf("***** Edge Cases tests *****");
 	printf("\n\n");
-	printf("------------------------------------------\n");
 
-	// Decimal base 10 tests
-	printf("***** Decimal base 10 tests *****\n");
+	ft_printf("My result: NO ARGS\n");
+	printf("Expected Result: NO ARGS\n");
+	ft_printf("My result: [%c]\n", ' ');
+	printf("Expected result: [%c]\n", ' ');
+	ft_printf("My result: [%%]\n");
+	printf("Expected result: [%%]\n");
+	ft_printf("My result: [%s]\n", NULL);
+	// printf("My result: [%s]\n", NULL);
+	// printf("Expected result: [%h]\n");
+
 	printf("\n");
-	printf("width: 8 -> [%8d]\n", 42);            
-	printf("Zero-padding, width: 8 ->[%08d]\n", 42);       
-	printf("[%d]\n", 42);                         
-	printf("left-padding(minus) -> [%-8d]\n", 42);        
-	printf("sign, zero-padding, width: 15 ->[%015d]\n", -42); 
-	printf("\n\n");
 	printf("------------------------------------------\n");
-
-	// Unsigned decimals base 10 tests
-	printf("***** Unsigned decimals base 10 tests *****\n");
-	printf("\n");
-	printf("width: 8 -> [%u]\n", 54);            
-	printf("Zero-padding, width: 8 ->[%08u]\n", 54);       
-	printf("left-padding(minus) -> [%-8u]\n", 54);        
-	printf("\n\n");
-	printf("------------------------------------------\n");
-
-	// Hexadecimals base 16 tests
-	printf("***** Hexadecimals base 16 tests *****\n");
-	printf("\n");
-	printf("No flags -> [%x]\n", 1990);            
-	printf("Hash - >[%#x]\n", 1990);            
-	printf("width: 8 -> [%8x]\n", 1990);            
-	printf("Hash, Zero-padding, width: 8 ->[%#08x]\n", 1990);       
-	printf("left-padding(minus) -> [%-8x]\n", 1900);        
-	printf("zero-padding, width: 15 ->[%015x]\n", -1990); 
-	printf("\n\n");
-	printf("------------------------------------------\n");
-
-// Hexa UPPERCASE base 16 tests
-	printf("***** Hexadecimals UPPERCASE base 16 tests *****\n");
-	printf("\n");
-	printf("No flags -> [%X]\n", 1990);  
-	printf("Hash - >[%#X]\n", 1990);            
-	printf("width: 8 -> [%8X]\n", 1990);            
-	printf("Hash, Zero-padding, width: 8 ->[%#08X]\n", 1990);       
-	printf("left-padding(minus) -> [%-8X]\n", 1900);        
-	printf("zero-padding, width: 15 ->[%015X]\n", -1990); 
-	printf("\n\n");
-	printf("------------------------------------------\n");
-
-	// For chars and strings only width and left padding are allowed
-	// Char tests
-	// ft_printf("***** Char tests *****\n");
-	// ft_printf("\n");
-	ft_printf("[%c]\n", 'a');
-	ft_printf("[%8c]\n", 'a');
-	ft_printf("[%-8c]\n", 'a');
-	// ft_printf("\n\n");
-	// ft_printf("------------------------------------------\n");
- 
-	// String tests
-	ft_printf("***** String tests *****\n");
-	ft_printf("\n");
-	ft_printf(".3 precision -> [%.3s]\n", "Hello World");                // [Hel]
-	ft_printf("width: 15, .3 precision -> [%15.3s]\n\n", "Hello World"); // [            Hel]
-	ft_printf("\n\n");
-	ft_printf("------------------------------------------\n");
-
-	// VOID pointer tests
-	void *ptr;
-	ptr = "Hello World";
-
-	printf("***** Void pointer tests *****\n");
-	printf("\n");
-	printf("[%p]\n", ptr);
-	printf("[%20p]\n", ptr);
-	printf("\n\n");
-	printf("------------------------------------------\n");
-
-	// printf("[%+8.4s]\n", "Hello World");
-	// warning: flag '+' results in undefined behavior with 's' conversion specifier : [    Hell]
-	// printf("[%015.3s]\n", "Hello World");
-	// warning: flag '0' results in undefined behavior with 's' conversion specifier[000000000000Hel]
-	// printf("[%-08d]\n", 42);
-	// warning: flag '0' is ignored when flag '-' is present : [42      ]
-	return (0);
 }
 
-// void compare_testing_results()
-// {
-// 	if (printf("width: 8 -> [%8d]\n", 42) == ft_printf("width: 8 -> [%8d]\n", 42))
-// 		printf("OK\n");
-// 	else
-// 		printf("KO\n");
-// }
+void char_tests()
+{
+	char a = 'A';
+	char b = 'B';
+	printf("------------------------------------------\n\n");
+	printf("***** Char tests *****");
+	printf("\n\n");
+
+	ft_printf("My result:         [%c]\n", a);
+	printf("Expected Result:   [%c]\n", a);
+	ft_printf("My result:         [%c, %c]\n", a, b);
+	printf("Expected Result:   [%c, %c]\n", a, b);
+
+	printf("\n");
+	printf("------------------------------------------\n");
+}
+
+void string_tests()
+{
+	char *s1 = "First String";
+	char *s2 = "Second string";
+
+	printf("------------------------------------------\n\n");
+	printf("***** String tests *****");
+	printf("\n\n");
+
+	ft_printf("My result:         [%s]\n", s1);
+	printf("Expected Result:   [%s]\n", s1);
+	ft_printf("My result:         [%s, %s]\n", s1, s2);
+	printf("Expected Result:   [%s, %s]\n", s1, s2);
+	ft_printf("My result:         [NULL %s NULL]\n", NULL);
+	// printf("Expected Result:    [NULL %s NULL]\n", NULL);
+
+	printf("\n");
+	printf("------------------------------------------\n");
+}
+
+void digit_tests()
+{
+	int x = 42;
+	int y = 1000;
+
+	printf("------------------------------------------\n\n");
+	printf("***** Digit tests *****");
+	printf("\n\n");
+
+	ft_printf("My result:         [%d]\n", x);
+	printf("Expected Result:   [%d]\n", x);
+	ft_printf("My result:         [%d, %d]\n", x, y);
+	printf("Expected Result:   [%d, %d]\n", x, y);
+	ft_printf("My Result:         [%u]\n", -2);
+	printf("Expected Result:   [%u]\n", -2);
+
+	printf("\n");
+	printf("------------------------------------------\n");
+}
+
+void hexa_tests()
+{
+	int x = 42;
+	int y = 1000;
+
+	printf("------------------------------------------\n\n");
+	printf("***** Hexa tests *****");
+	printf("\n\n");
+
+	if (ft_printf("My result:         [%x]\n", x) == printf("Expected Result:   [%x]\n", x))
+		printf("PASSED!!\n\n");
+	else 
+		printf("NOT PASSED!!\n");
+	if (ft_printf("My result:         [%x, %x]\n", x, y) == printf("Expected Result:   [%x, %x]\n", x, y))
+		printf("PASSED!!\n\n");
+	else 
+		printf("NOT PASSED!!\n\n");
+	if (ft_printf("My result:         [%X]\n", x) == printf("Expected Result:   [%X]\n", x))
+		printf("PASSED!!\n\n");
+	else 
+		printf("NOT PASSED!!\n");
+	if (ft_printf("My result:         [%X, %X]\n", x, y) == printf("Expected Result:   [%X, %X]\n", x, y))
+		printf("PASSED!!\n\n");
+	else 
+		printf("NOT PASSED!!\n\n");
+
+	printf("\n");
+	printf("------------------------------------------\n");
+}
+
+void pointer_tests()
+{
+	char *p1 = "First String";
+
+
+	printf("------------------------------------------\n\n");
+	printf("***** Pointer tests *****");
+	printf("\n\n");
+
+	ft_printf("My result:         [%p]\n", p1);
+	printf("Expected Result:   [%p]\n", p1);
+	// ft_printf("My result:         [%p, %p]\n", p1, p2);
+	// printf("Expected Result:   [%p, %p]\n", p1, p2);
+
+	printf("\n");
+	printf("------------------------------------------\n");
+}
+
+int main()
+{
+	edge_cases_tests();
+  char_tests();
+	string_tests();
+	digit_tests();
+	hexa_tests();
+	pointer_tests();
+  return 0;
+}
