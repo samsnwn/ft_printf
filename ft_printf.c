@@ -24,15 +24,11 @@ int	print_args(va_list ap, char specifier)
 	int	chars_written;
 
 	chars_written = 0;
-	if (ap == NULL)
-		return (chars_written);
 	if (specifier == 'c')
 		chars_written += write_char(va_arg(ap, int));
 	else if (specifier == 's')
 		chars_written += write_str(va_arg(ap, char *));
-	else if (specifier == 'd')
-		chars_written += write_digit(va_arg(ap, int));
-	else if (specifier == 'i')
+	else if (specifier == 'd' || specifier == 'i')
 		chars_written += write_digit(va_arg(ap, int));
 	else if (specifier == 'u')
 		chars_written += write_unsigned(va_arg(ap, int), 10, 0);

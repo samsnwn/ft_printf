@@ -15,7 +15,7 @@ static int	count_hex(unsigned long n)
 	return (i);
 }
 
-static char	*hex_to_str(unsigned long n)
+static char	*create_str(unsigned long n)
 {
 	int		size;
 	char	*hex;
@@ -43,7 +43,7 @@ int	write_ptr(void *ptr)
 	unsigned long n;
 
 	n = (unsigned long)ptr;
-	str = hex_to_str(n);
+	str = create_str(n);
 	len = write_str(str);
 	free(str);
 	return (len);
