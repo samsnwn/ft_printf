@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static int	count_hex(unsigned long n)
+static int	nbr_size(unsigned long n)
 {
 	int	i;
 
@@ -18,33 +18,33 @@ static int	count_hex(unsigned long n)
 static char	*create_str(unsigned long n)
 {
 	int		size;
-	char	*hex;
+	char	*str;
 	char	*base;
 
 	base = "0123456789abcdef";
-	size = count_hex(n);
-	hex = (char *)malloc(sizeof(char) * (size + 1));
-	if (!hex)
+	size = nbr_size(n);
+	str = (char *)malloc(sizeof(char) * (size + 1));
+	if (!str)
 		return (NULL);
-	hex[size] = '\0';
+	str[size] = '\0';
 	while (size > 0)
 	{
-		hex[size - 1] = base[n % 16];
-		n = n / 16;
+		str[size - 1] = base[n % 16];
+		n /= 16;
 		size--;
 	}
-	return (hex);
+	return (str);
 }
 
 int	write_ptr(void *ptr)
 {
-	int len;
+	int written_chars;
 	char *str;
 	unsigned long n;
 
 	n = (unsigned long)ptr;
 	str = create_str(n);
-	len = write_str(str);
+	written_chars = write_str(str);
 	free(str);
-	return (len);
+	return (written_chars);
 }
