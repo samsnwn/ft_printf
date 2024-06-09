@@ -9,7 +9,7 @@ static int	nbr_size(unsigned long n)
 		return (1);
 	while (n > 0)
 	{
-		n = n / 16;
+		n /= 16;
 		i++;
 	}
 	return (i);
