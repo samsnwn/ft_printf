@@ -6,7 +6,7 @@
 /*   By: samcasti <samcasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:32:03 by samcasti          #+#    #+#             */
-/*   Updated: 2024/06/10 16:36:03 by samcasti         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:13:11 by samcasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,13 @@ int	write_ptr(void *ptr)
 	unsigned long	n;
 
 	n = (unsigned long)ptr;
-	str = create_str(n);
-	written_chars = write_str(str);
-	free(str);
+	if (n == 0)
+		written_chars = write_str("(nil)");
+	else
+	{
+		str = create_str(n);
+		written_chars = write_str("0x") + write_str(str);
+		free(str);
+	}
 	return (written_chars);
 }

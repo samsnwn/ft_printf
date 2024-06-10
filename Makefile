@@ -1,4 +1,4 @@
-SRCS = ft_printf.c utils.c write_letters.c write_numbers.c write_ptr.c main.c
+SRCS = ft_printf.c utils.c write_letters.c write_numbers.c write_ptr.c
 
 HEAD = ft_printf.h
 OBJS = ${SRCS:.c=.o}
@@ -8,9 +8,6 @@ RM = rm -f
 CFLAGS = -Wall -Werror -Wextra
 
 all : ${NAME}
-
-main:	all
-	${CC} ${CFLAGS} main.c -o main
 
 ${NAME} : ${OBJS}
 	ar rc ${NAME} ${OBJS}
@@ -23,7 +20,7 @@ clean :
 	${RM} ${OBJS} 
 
 fclean : clean
-	${RM} ${NAME} main
+	${RM} ${NAME}
 
 re : fclean all
 

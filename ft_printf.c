@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samcasti <samcasti@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: samcasti <samcasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:30:59 by samcasti          #+#    #+#             */
-/*   Updated: 2024/06/10 16:31:06 by samcasti         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:59:22 by samcasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	print_args(va_list ap, char specifier)
 	else if (specifier == '%')
 		chars_written += write_char('%');
 	else if (specifier == 'p')
-		chars_written += write_str("0x") + write_ptr(va_arg(ap, void *));
+		chars_written += write_ptr(va_arg(ap, void *));
 	else
 		chars_written += write(1, &specifier, 1);
 	return (chars_written);
