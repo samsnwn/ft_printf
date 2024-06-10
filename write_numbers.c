@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   write_numbers.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: samcasti <samcasti@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/10 16:31:52 by samcasti          #+#    #+#             */
+/*   Updated: 2024/06/10 16:35:24 by samcasti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	write_digit(long int n)
@@ -23,9 +35,9 @@ int	write_digit(long int n)
 
 int	write_unsigned(unsigned int n, unsigned int base, int is_upper)
 {
-	int written_chars;
-	char *hex_symbols;
-	char *upper_hex_symbols;
+	int		written_chars;
+	char	*hex_symbols;
+	char	*upper_hex_symbols;
 
 	hex_symbols = "0123456789abcdef";
 	upper_hex_symbols = "0123456789ABCDEF";

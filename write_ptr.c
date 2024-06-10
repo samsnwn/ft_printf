@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   write_ptr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: samcasti <samcasti@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/10 16:32:03 by samcasti          #+#    #+#             */
+/*   Updated: 2024/06/10 16:36:03 by samcasti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	nbr_size(unsigned long n)
@@ -38,9 +50,9 @@ static char	*create_str(unsigned long n)
 
 int	write_ptr(void *ptr)
 {
-	int written_chars;
-	char *str;
-	unsigned long n;
+	int				written_chars;
+	char			*str;
+	unsigned long	n;
 
 	n = (unsigned long)ptr;
 	str = create_str(n);
