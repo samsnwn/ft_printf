@@ -6,12 +6,15 @@ NAME = libftprintf.a
 CC = cc
 RM = rm -f
 CFLAGS = -Wall -Werror -Wextra
+ARCHIVER = ar
+ARCHIVER_FLAGS = rc
+ARCHIVE_INDEX = ranlib
 
 all : ${NAME}
 
 ${NAME} : ${OBJS}
-	ar rc ${NAME} ${OBJS}
-	ranlib ${NAME}
+	${ARCHIVER} ${ARCHIVER_FLAGS} ${NAME} ${OBJS}
+	${ARCHIVE_INDEX} ${NAME}
 
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
