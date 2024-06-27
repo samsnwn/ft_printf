@@ -1,4 +1,4 @@
-SRCS = ft_printf.c utils.c write_letters.c write_numbers.c write_ptr.c
+SRCS = ft_printf.c utils.c write_letters.c write_numbers.c write_ptr.c main.c
 
 HEAD = ft_printf.h
 OBJS = ${SRCS:.c=.o}

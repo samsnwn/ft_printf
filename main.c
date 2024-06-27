@@ -1,4 +1,6 @@
 #include "ft_printf.h"
+#include <limits.h>
+
 
 void edge_cases_tests()
 {
@@ -60,7 +62,7 @@ void string_tests()
 
 void digit_tests()
 {
-	int x = 42;
+	int x = -2147483647;
 	int y = 1000;
 
 	printf("------------------------------------------\n\n");
@@ -73,6 +75,12 @@ void digit_tests()
 	printf("Expected Result:   [%d, %d]\n", x, y);
 	ft_printf("My Result:         [%u]\n", -2);
 	printf("Expected Result:   [%u]\n", -2);
+	ft_printf("My Result:         [%d]\n", INT_MIN);
+	printf("Expected Result:   [%d]\n", INT_MIN);
+		ft_printf("My Result:         [%d]\n", INT_MIN + 1);
+	printf("Expected Result:   [%d]\n", INT_MIN + 1);
+		ft_printf("My Result:         [%d]\n", INT_MAX);
+	printf("Expected Result:   [%d]\n", INT_MAX);
 
 	printf("\n");
 	printf("------------------------------------------\n");
@@ -87,19 +95,19 @@ void hexa_tests()
 	printf("***** Hexa tests *****");
 	printf("\n\n");
 
-	if (ft_printf("My result:         [%x]\n", x) == printf("Expected Result:   [%x]\n", x))
+	if (ft_printf("M[%x]\n", x) == printf("E[%x]\n", x))
 		printf("PASSED!!\n\n");
 	else 
 		printf("NOT PASSED!!\n");
-	if (ft_printf("My result:         [%x, %x]\n", x, y) == printf("Expected Result:   [%x, %x]\n", x, y))
+	if (ft_printf("M[%x, %x]\n", x, y) == printf("E[%x, %x]\n", x, y))
 		printf("PASSED!!\n\n");
 	else 
 		printf("NOT PASSED!!\n\n");
-	if (ft_printf("My result:         [%X]\n", x) == printf("Expected Result:   [%X]\n", x))
+	if (ft_printf("M[%X]\n", x) == printf("E[%X]\n", x))
 		printf("PASSED!!\n\n");
 	else 
 		printf("NOT PASSED!!\n");
-	if (ft_printf("My result:         [%X, %X]\n", x, y) == printf("Expected Result:   [%X, %X]\n", x, y))
+	if (ft_printf("M[%X, %X]\n", x, y) == printf("E[%X, %X]\n", x, y))
 		printf("PASSED!!\n\n");
 	else 
 		printf("NOT PASSED!!\n\n");
@@ -119,7 +127,7 @@ void pointer_tests()
 
 	ft_printf("My result:         [%p]\n", p1);
 	printf("Expected Result:   [%p]\n", p1);
-	printf("Expected Result:   [%p]\n", 0);
+	// printf("Expected Result:   [%p]\n", 0);
 	ft_printf("My Result:   [%p]\n", 0);
 
 	
@@ -133,11 +141,11 @@ void pointer_tests()
 
 int main()
 {
-// 	edge_cases_tests();
-//   char_tests();
-// 	string_tests();
-// 	digit_tests();
-// 	hexa_tests();
+	edge_cases_tests();
+  char_tests();
+	string_tests();
+	digit_tests();
+	hexa_tests();
 	pointer_tests();
   return 0;
 }

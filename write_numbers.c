@@ -6,7 +6,7 @@
 /*   By: samcasti <samcasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:31:52 by samcasti          #+#    #+#             */
-/*   Updated: 2024/06/10 16:35:24 by samcasti         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:38:04 by samcasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	write_digit(long int n)
 	written_chars = 0;
 	if (n < 0)
 	{
-		if (n == -2147483647)
-			return (write(1, "-2", 2) + write_digit(-147483647));
+		if (n == -2147483648)
+			return (write(1, "-2", 2) + write_digit(147483648));
 		else
 			return (write(1, "-", 1) + write_digit(-n));
 	}
