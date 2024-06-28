@@ -139,6 +139,25 @@ void pointer_tests()
 	printf("------------------------------------------\n");
 }
 
+void mix_test()
+{
+		printf("------------------------------------------\n\n");
+	printf("***** Pointer tests *****");
+	printf("\n\n");
+	if (ft_printf("M[%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%]\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0) == printf("E[%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%]\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0))
+	{
+		printf("PASSED!!\n\n");
+	}
+	else
+	{
+				printf("NOT PASSED!!\n\n");
+	}
+
+
+		printf("\n");
+	printf("------------------------------------------\n");
+}
+
 int main()
 {
 	edge_cases_tests();
@@ -147,5 +166,6 @@ int main()
 	digit_tests();
 	hexa_tests();
 	pointer_tests();
+	mix_test();
   return 0;
 }
