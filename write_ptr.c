@@ -56,7 +56,7 @@ int	write_ptr(void *ptr)
 
 	n = (unsigned long)ptr;
 	if (n == 0)
-		written_chars = write_str("(nil)");
+		written_chars = write_str("0x0");
 	else
 	{
 		str = create_str(n);
